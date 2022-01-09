@@ -1,0 +1,28 @@
+<div class="login-body">
+  <div class="login-wrapper">
+      <div class="login-panel">
+          <a [routerLink]="['/']" class="logo">
+              <img src="assets/layout/images/logo-poseidon-dark.svg" alt="poseidon-layout" />
+          </a>
+          <div class="login-form">
+              <h2>Login To Your Premium Account</h2>
+              <p>You don't have an account? <a href="#"> Sign up</a></p>
+              <form [formGroup]="logInForm" (ngSubmit)="login()">
+                <div class="p-fluid">
+                  <div class="p-field">
+                    <input id="email" type="text" pInputText placeholder="Email" formControlName="email"/>
+                  </div>
+                  <div class="p-field">
+                    <input id="password" type="text" pInputText placeholder="Password" formControlName="password"/>
+                  </div>
+                  <div class="p-field">
+                    <button pButton pRipple type="submit" label="LOGIN" [disabled]="!logInForm.valid"></button>
+                  </div>
+                </div>
+              </form>
+          </div>
+
+          <p>A problem? <a href="#">Click here</a> and let us help you.</p>
+      </div>
+  </div>
+</div>

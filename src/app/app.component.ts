@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'learningsystem';
+  topbarTheme = 'light';
+
+  menuTheme = 'dim';
+
+  layoutMode = 'light';
+
+  menuMode = 'static';
+
+  isRTL = false;
+
+  inputStyle = 'outlined';
+
+  ripple: boolean;
+
+  constructor(private primengConfig: PrimeNGConfig) {
+    this.ripple = false;
+  }
+
+  ngOnInit() {
+    this.primengConfig.ripple = true;
+  }
 }
