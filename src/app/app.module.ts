@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PrimecomponentsModule } from './primecomponents/primecomponents.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PrimecomponentsModule } from './primecomponents/primecomponents.module'
     AppRoutingModule,
     PrimecomponentsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
