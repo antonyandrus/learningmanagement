@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Customresponse } from '../pojos/customresponse';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   isSubmitted: boolean;
   formFieldSubscription: Subscription;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService) {
     this.logInForm = this.getLogInForm();
     this.isSubmitted = false;
     this.formFieldSubscription = new Subscription();
@@ -38,7 +40,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login(): void {
     this.isSubmitted = true;
-    console.log(this.logInForm.value);
+    if (!this.logInForm.valid) {
+      return;
+    }
+    this.userService.login(this.logInForm.value, (response: Customresponse) => {
+
+    });
   }
 
 }
