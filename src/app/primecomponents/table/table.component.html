@@ -1,0 +1,49 @@
+<p-table
+  #dtc
+  [value]="config.list"
+  [(selection)]="config.selected"
+  [dataKey]="config.key"
+  [selectionMode]="config.selectionMode"
+  styleClass="p-datatable-customers p-datatable-gridlines p-datatable-striped p-datatable-sm"
+  [scrollable]="config.scrollable"
+  [scrollHeight]="config.scrollHeight"
+  [filterDelay]="config.filterDelay"
+  [globalFilterFields]="config.filterFields"
+>
+  <ng-template pTemplate="caption">
+    <div
+      class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header"
+    >
+      {{ config.tableHeader.name}}
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input
+          pInputText
+          type="text"
+          (input)="dtc.filterGlobal($event.target, 'contains')"
+          placeholder="Global Search"
+        />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr *ngFor="let rowHeader of config.tableHeader.headerRow">
+      <th [pSortableColumn]="rowHeader.fieldName">
+        {{ rowHeader.headerName }}
+        <p-sortIcon [field]="rowHeader.fieldName"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-data>
+    <tr [pSelectableRow]="data">
+      <td>
+        {{ data }}
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="8">No data found.</td>
+    </tr>
+  </ng-template>
+</p-table>
