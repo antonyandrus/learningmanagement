@@ -1,3 +1,4 @@
 export const apiList = {
-  'login': 'login'
+  'login': 'login',
+  'savetenant': 'tenant/save'
 }

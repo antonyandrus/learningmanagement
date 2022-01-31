@@ -11,10 +11,10 @@ import { UtilityService } from './utility.service';
 })
 export class UserService {
 
-  customResponse: Customresponse;
+  customResponse: Customresponse = new Customresponse();
 
   constructor(private apiService: ApiService, private utilityService: UtilityService) {
-    this.customResponse = this.utilityService.initializeCustomResponse();
+
   }
 
   login(request: LogInRequest, response: any): void {

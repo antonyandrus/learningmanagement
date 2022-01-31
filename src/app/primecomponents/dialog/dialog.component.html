@@ -1,0 +1,7 @@
+<p-dialog [header]="config.header" [visible]="true" [modal]="config.modal" showEffect="fade" [style]="config.width">
+  <ng-container [ngTemplateOutlet]="content"></ng-container>
+  <p-footer>
+      <button type="button" pButton icon="pi pi-check" (click)="onActionClick()" label="Save" class="p-button-text"></button>
+      <button type="button" pButton icon="pi pi-times" (click)="onCancelClick()" label="Cancel" class="p-button-text"></button>
+  </p-footer>
+</p-dialog>

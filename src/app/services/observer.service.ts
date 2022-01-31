@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Customresponse } from '../pojos/customresponse';
 
 @Injectable({
@@ -9,10 +9,14 @@ export class ObserverService {
 
   constructor() { }
 
-  private customResponseSubject = new Subject<any>();
-  customResponseObservable$ = this.customResponseSubject.asObservable();
+  private breadCrumbSubject = new Subject<any>();
 
-  initializeCustomResponseObservable(value: any) {
-    return this.customResponseSubject.next(value);
+  sendClickEvent() {
+    this.breadCrumbSubject.next(0);
   }
+
+  getClickEvent(): Observable<any>{
+    return this.breadCrumbSubject.asObservable();
+  }
+
 }

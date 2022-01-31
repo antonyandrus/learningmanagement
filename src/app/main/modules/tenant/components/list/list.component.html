@@ -1,5 +1,146 @@
 <div class="card">
   <div class="p-col-12">
-    <app-table (config)="tableConfig"></app-table>
+    <app-table (config)="(tableConfig)"></app-table>
   </div>
 </div>
+
+<app-dialog
+  *ngIf="showAddTenantModal"
+  [config]="addTenantConfig"
+  (cancelCallBack)="cancelTenantModal()"
+  (actionCallBack)="saveTenant()"
+  [content]="addtenantcontent"
+></app-dialog>
+
+<ng-template #addtenantcontent>
+  <form [formGroup]="tenantFormGroup" (onSubmit)="saveTenant()">
+    <h6>Basic Details</h6>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-3">
+        <label for="tenantname">Tenant Name</label>
+        <input
+          id="tenantname"
+          name="tenantname"
+          type="text"
+          pInputText
+          formControlName="tenantName"
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              submitted && formControls['tenantName'].errors
+          }"
+        />
+        <div class="p-error" *ngIf="submitted && formControls['tenantName'].errors">
+          <small *ngIf="formControls['tenantName'].errors['required']">Tenant Name is required.</small>
+        </div>
+      </div>
+      <div class="p-field p-col-3">
+        <label for="tenantemail">Tenant Email</label>
+        <input
+          id="tenantemail"
+          type="text"
+          pInputText
+          formControlName="tenantEmail"
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              submitted && formControls['tenantEmail'].errors
+          }"
+        />
+        <div class="p-error" *ngIf="submitted && formControls['tenantEmail'].errors">
+          <small *ngIf="formControls['tenantEmail'].errors['required']">Tenant Email is required.</small>
+        </div>
+      </div>
+    </div>
+    <h6>Primary Contact</h6>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-3">
+        <label for="firstname">First Name</label>
+        <input
+          id="firstname"
+          type="text"
+          pInputText
+          formControlName="primaryFirstName"
+        />
+      </div>
+      <div class="p-field p-col-3">
+        <label for="lastname">Last Name</label>
+        <input
+          id="lastname"
+          type="text"
+          pInputText
+          formControlName="primaryLastName"
+        />
+      </div>
+      <div class="p-field p-col-3">
+        <label for="primaryemail">Email</label>
+        <input
+          id="primaryemail"
+          type="text"
+          pInputText
+          formControlName="primaryEmail"
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              submitted && formControls['primaryEmail'].errors
+          }"
+        />
+        <div class="p-error" *ngIf="submitted && formControls['primaryEmail'].errors">
+          <small *ngIf="formControls['primaryEmail'].errors['required']">Primary Email is required.</small>
+        </div>
+      </div>
+      <div class="p-field p-col-3">
+        <label for="primaryphone">Phone Number</label>
+        <input
+          id="primaryphone"
+          type="text"
+          pInputText
+          formControlName="primaryPhone"
+        />
+      </div>
+    </div>
+    <h6>Location</h6>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-3">
+        <label for="addressone">Address One</label>
+        <input
+          id="addressone"
+          type="text"
+          pInputText
+          formControlName="addressOne"
+        />
+      </div>
+      <div class="p-field p-col-3">
+        <label for="addresstwo">Address Two</label>
+        <input
+          id="addresstwo"
+          type="text"
+          pInputText
+          formControlName="addressTwo"
+        />
+      </div>
+      <div class="p-field p-col-3">
+        <label for="city">City</label>
+        <input id="city" type="text" pInputText formControlName="city" />
+      </div>
+      <div class="p-field p-col-3">
+        <label for="state">State</label>
+        <input id="state" type="text" pInputText formControlName="state" />
+      </div>
+      <div class="p-field p-col-3">
+        <label for="zipcode">Zip Code</label>
+        <input id="zipcode" type="text" pInputText formControlName="zipCode" />
+      </div>
+      <div class="p-field p-col-3">
+        <label for="country">Country</label>
+        <input id="country" type="text" pInputText formControlName="country" />
+      </div>
+      <div class="p-field p-col-3">
+        <label for="locationphone">Phone Number</label>
+        <input
+          id="locationphone"
+          type="text"
+          pInputText
+          formControlName="tenantPhone"
+        />
+      </div>
+    </div>
+  </form>
+</ng-template>
